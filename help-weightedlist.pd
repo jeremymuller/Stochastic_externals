@@ -1,0 +1,127 @@
+#N canvas 162 121 1049 605 10;
+#X floatatom 47 428 0 0 0 0 - - -;
+#X obj 20 11 weightedlist;
+#X msg 47 288 0.5 0.5;
+#X text 99 286 < index 0 and 1 have an equal chance;
+#X msg 55 312 30 30 30;
+#X text 117 310 < index 0 \, 1 \, and 2 all have equal chance (1/3
+chance);
+#N canvas 0 22 209 302 synth 0;
+#X obj 97 35 inlet;
+#X obj 97 57 mtof;
+#X obj 97 79 t f b;
+#X obj 97 141 osc~;
+#X msg 118 118 0.75;
+#X obj 97 222 *~;
+#X obj 97 254 dac~;
+#X obj 112 193 line~;
+#X msg 112 171 0.6 \, 0 300;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 2 1 8 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 1;
+#X connect 5 0 6 0;
+#X connect 5 0 6 1;
+#X connect 7 0 5 1;
+#X connect 8 0 7 0;
+#X restore 485 193 pd synth;
+#X obj 696 20 loadbang;
+#X msg 696 42 \; pd dsp 1 \;;
+#X text 461 104 Try it out with a scale;
+#X text 406 127 Click here >;
+#X msg 485 127 30 15 20 15 20;
+#X text 688 149 60: 30% chance \; 62: 15% chance \; 64: 20% chance
+\; 67: 15% chance \; 69: 20% chance \;;
+#X floatatom 495 171 5 0 0 0 - - -;
+#X text 154 546 copyright 2015 version 0.2 by Jeremy Muller;
+#X msg 67 348 elements 60 62 64 67 69;
+#X text 83 428 element based on weighted probabilities;
+#X obj 47 403 weightedlist 100 101 102;
+#X text 201 402 < creation arguments set the elements in list;
+#X text 217 346 < change elements in list using "elements" keyword
+;
+#X text 278 376 < or insert elements through right inlet;
+#X msg 188 378 60 62 64 67 69;
+#X obj 485 149 weightedlist 60 62 64 67 69;
+#X text 582 126 < These probabilities are for the args:;
+#X text 28 78 WEIGHTEDLIST takes a list in its left and right inlet
+and/or a list as arguments. Right-inlet lists and left-inlet lists
+starting with keyword "elements" will store the list of elements. Left
+inlet lists starting with a number will output an element according
+to the probabilities. This is useful for giving certain elements in
+an array different probabilities rather than equal probabilities.;
+#X text 104 11 - Returns an element of a stored list based on the input
+list of weighted probabilities.;
+#X text 28 198 Make sure the probabilities are what you expect. For
+example \, if you input the list [50 50 10] then your probabilities
+will NOT be 50% \, 50% \, 10%! Since 50+50+10 = 110 and NOT 100 you
+won't get the expected weights.;
+#X floatatom 547 428 0 0 0 0 - - -;
+#X msg 547 358 clear;
+#X obj 547 403 weightedlist;
+#X text 626 402 < if no element list then output will give indices
+;
+#X text 576 428 index based on weighted probabilities;
+#X text 587 356 < clear the element list;
+#X msg 557 378 0.25 0.75;
+#X text 619 378 < output will give index 1 75% of the time;
+#X obj 524 494 t f b;
+#X obj 589 469 sel 0 1;
+#N canvas 0 22 393 161 count 0;
+#X obj 94 56 inlet;
+#X obj 214 26 inlet reset;
+#X obj 94 78 f;
+#X obj 94 100 outlet;
+#X obj 124 78 + 1;
+#X obj 164 56 inlet;
+#X obj 164 78 f;
+#X obj 164 100 outlet;
+#X obj 194 78 + 1;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 1 0 6 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 4 0 2 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 0 8 0;
+#X connect 8 0 6 1;
+#X restore 589 491 pd count;
+#X msg 641 469 1;
+#X floatatom 589 513 5 0 0 0 - - -;
+#X floatatom 634 513 5 0 0 0 - - -;
+#X text 671 513 < the results should prove the probabilities work \,
+however \, they may not be exact;
+#X obj 524 516 until;
+#X msg 524 538 25 75;
+#X msg 524 472 100;
+#X text 440 470 click here >;
+#X msg 607 310 0 1;
+#X connect 2 0 17 0;
+#X connect 4 0 17 0;
+#X connect 7 0 8 0;
+#X connect 11 0 22 0;
+#X connect 15 0 17 0;
+#X connect 17 0 0 0;
+#X connect 21 0 17 1;
+#X connect 22 0 13 0;
+#X connect 22 0 6 0;
+#X connect 28 0 29 0;
+#X connect 29 0 27 0;
+#X connect 29 0 36 0;
+#X connect 33 0 29 0;
+#X connect 35 0 42 0;
+#X connect 35 1 38 0;
+#X connect 36 0 37 0;
+#X connect 36 1 37 1;
+#X connect 37 0 39 0;
+#X connect 37 1 40 0;
+#X connect 38 0 37 2;
+#X connect 42 0 43 0;
+#X connect 43 0 29 0;
+#X connect 44 0 35 0;
+#X connect 46 0 29 1;

@@ -1,0 +1,35 @@
+#N canvas 508 103 551 610 10;
+#X msg 123 209 bang;
+#X floatatom 204 256 0 0 0 0 - - -;
+#X floatatom 123 309 0 0 0 0 - - -;
+#X text 175 207 bang for output;
+#X text 231 256 inlet to reset the range;
+#X text 217 283 argument to initialize the range;
+#X obj 20 11 reallyrandom;
+#X text 104 11 - pseudorandom integers that are slightly better than
+Pd's built-in [random] object;
+#X obj 123 284 reallyrandom 5;
+#X text 158 574 copyright 2015 version 0.1 by Jeremy Muller;
+#X text 72 406 TEST DIFFERENCES OF [reallyrandom] AND [random]:;
+#X obj 99 433 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 99 453 reallyrandom 5;
+#X obj 229 453 random 5;
+#X obj 99 475 print reallyrandom;
+#X obj 229 475 print random;
+#X text 11 76 REALLYRANDOM works just like [random] (without seeds)
+but uses a different random architecture to create randomness on initialization.
+For example \, if your patch is using [random] to initialize some variables
+upon starting up Pd \, you may have noticed that it always uses the
+same sequence of random numbers. REALLYRANDOM will not use the same
+sequence of random numbers upon starting and restarting Pd.;
+#X text 98 500 Watch what prints to the console \, then restart Pd
+and notice that [random] starts the same sequence while [reallyrandom]
+doesn't.;
+#X connect 0 0 8 0;
+#X connect 1 0 8 1;
+#X connect 8 0 2 0;
+#X connect 11 0 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 14 0;
+#X connect 13 0 15 0;

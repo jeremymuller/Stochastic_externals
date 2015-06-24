@@ -1,0 +1,72 @@
+#N canvas 46 114 1013 554 10;
+#X text 135 439 copyright 2015 version 0.1 by Jeremy Muller;
+#X obj 515 47 loadbang;
+#X msg 515 69 \; pd dsp 1 \;;
+#X obj 80 25 gauss 5 1;
+#X text 149 26 - Returns a random Gaussian distribution number.;
+#X obj 116 363 gauss 10 2;
+#X text 71 90 Takes two arguments: mean \, standard deviation. The
+right two inlets correspond to these arguments. Bang to output a number
+result.;
+#X msg 116 271 bang;
+#X floatatom 144 303 5 0 0 0 - - -;
+#X text 187 363 optional arguments initialize the mean and stddev;
+#X text 180 302 mean;
+#X floatatom 173 333 5 0 0 0 - - -;
+#X text 209 332 standard deviation;
+#X text 71 140 Gaussian distributions (aka Normal distributions) generate
+random numbers weighted around the mean. This creates the ubiquitous
+bell-shape curve so 50% of the numbers will fall above the mean and
+50% will fall below the mean. Standard deviation is how spread out
+the numbers are. 68% of the numbers will fall within 1 standard deviation.
+For example \, with the arguments 10 2 \, 68% of the numbers will land
+between 12 and 8 with 10 being the mean. In this example a single standard
+deviation is +-2.;
+#X text 445 270 TODO: MAKE AUDIO EXAMPLE;
+#X obj 116 385 print GAUSS;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array distributions 100 float 3;
+#A 0 -1.83963 -2.95707 -0.0924304 1.31856 0.118123 -0.00778834 0.0850223
+-0.671968 -1.40836 0.339066 0.233936 1.89936 -1.88219 -0.755314 -1.31179
+-0.779917 -0.113445 0.704375 -0.281621 1.17292 -0.332875 -1.02951 -0.77584
+1.75532 -0.91337 0.748223 1.09569 -0.799471 -0.0386266 0.129706 0.189013
+-0.528105 0.200308 0.0724636 -0.608057 -1.09495 0.127946 1.12687 -2.07902
+-0.389487 -1.38819 -0.356105 1.24927 0.0546084 0.691852 0.819053 0.794032
+-0.766981 0.296953 -1.15096 -0.108506 -0.072344 0.758727 -1.89071 -2.07754
+0.25798 1.90509 0.142586 -0.69221 1.24898 -0.516219 -0.609527 -1.3363
+0.592896 0.309314 0.15242 -0.830793 0.614389 2.36108 0.529682 0.223651
+-0.465637 -1.97003 -0.0804573 0.343058 0.521997 0.010802 1.87141 3.04393
+1.45361 -0.788698 -0.274385 0.517723 0.994127 1.03933 0.242345 0.387997
+0.170032 0.439358 2.80257 0.902189 0.526254 0.480986 -0.024308 -0.00384501
+-1.34338 -0.019733 -1.23762 1.5106 -0.54177;
+#X coords 0 5 100 -5 200 140 1 0 0;
+#X restore 693 104 graph;
+#X obj 693 261 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 693 281 t b b;
+#X msg 693 303 100;
+#X msg 723 303 0;
+#X text 716 258 < click here to see the distributions;
+#X obj 693 325 until;
+#X obj 693 347 t b b;
+#X obj 693 391 tabwrite distributions;
+#X obj 822 369 f;
+#X obj 851 369 + 1;
+#X obj 693 369 gauss 0 1;
+#X connect 1 0 2 0;
+#X connect 5 0 15 0;
+#X connect 7 0 5 0;
+#X connect 8 0 5 1;
+#X connect 11 0 5 2;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 20 0;
+#X connect 19 0 22 0;
+#X connect 20 0 25 1;
+#X connect 22 0 23 0;
+#X connect 23 0 27 0;
+#X connect 23 1 25 0;
+#X connect 25 0 24 1;
+#X connect 25 0 26 0;
+#X connect 26 0 25 1;
+#X connect 27 0 24 0;
