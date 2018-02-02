@@ -1,4 +1,4 @@
-# Stochastic_externals
+# Stochastic externals
 These are externals to be compiled and used with the Pure Data visual programming language.
 
 You will need to download Pure Data http://msp.ucsd.edu/software.html to use these externals.
