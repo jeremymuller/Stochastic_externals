@@ -1,9 +1,9 @@
 # Stochastic_externals
-These are externals to be compiled and used with the Pure Data visual programming language. 
+These are externals to be compiled and used with the Pure Data visual programming language.
 
-You will need to download Pure Data https://puredata.info/downloads to use these externals.
+You will need to download Pure Data http://msp.ucsd.edu/software.html to use these externals.
 
-Below is a list of these objects that I created with a little explanation about them. These use different ideas from probability theory and some of these were inspired from the Python language’s “random” library, however, these are all written in C. 
+Below is a list of these objects that I created with a little explanation about them. These use different ideas from probability theory and some of these were inspired from the Python language’s “random” library, however, these are all written in C.
 
 > annealing – Uses the simulated annealing algorithm by using an array table lookup. States are simplified by comparing floats from the array and giving their output as you step through the algorithm.
 
